@@ -3,6 +3,7 @@ import Navigation from './Navigation';
 
 const Header = () => {
     const [width, setWidth] = useState(window.innerWidth)
+    
     useEffect(() => {
         const currentWidth = () => {
             setWidth(window.innerWidth)
@@ -11,11 +12,11 @@ const Header = () => {
         return () => {
             window.removeEventListener('resize', currentWidth)
         }
-    })
+    },[])
 
     return (
-        <header className='relative'>
-            <h1 className='absolute'>width :  {width}px</h1>
+        <header className=''>
+            <h1 className='absolute bottom-0'>width : {width}px</h1>
             <Navigation />
         </header>
     );
