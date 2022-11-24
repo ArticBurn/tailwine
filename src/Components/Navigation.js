@@ -1,4 +1,4 @@
-import React, {useRef,useState} from 'react'
+import React, {useRef} from 'react'
 import opensea from '../Assets/opensea.svg'
 
 const Navigation = () => {
@@ -8,13 +8,11 @@ const Navigation = () => {
     }
     const hiddenShortCut = useRef(null)
     const onFocus = () => {
-        hiddenShortCut.current.classList.remove('lg:block')
-        console.log(hiddenShortCut.current.classList.length);
+        return hiddenShortCut.current.classList.remove('lg:block')
     }
 
     const onBlur = () => {
-        hiddenShortCut.current.classList.add('lg:block')
-        console.log(hiddenShortCut.current.classList.length);
+        return hiddenShortCut.current.classList.add('lg:block')
     }
 
     return (
@@ -22,8 +20,9 @@ const Navigation = () => {
             <nav className='flex py-[1.5rem]'>
                 <div className='flex items-center justify-center w-3/12'>
                     <img src={opensea} alt='opensea-logo' style={logoSize} />
-                    <h1 className='px-1 text-[1.5rem] text-black hidden sm:inline '>OpenSea</h1>
+                    <h1 className='px-1 text-[1.5rem] text-black hidden sm:inline tracking-widest'>OPENSEA</h1>
                 </div>
+                {/* Search Bar */}
                 <div className='flex text-center w-6/12 items-center justify-center relative'>
                     <input type="search" onFocus={onFocus} onBlur={onBlur} placeholder="Search items, collections, and accounts ..." className="h-full w-full pl-[2rem] pr-[0.5rem] rounded-lg opacity-75 focus:opacity-100 focus:outline-none" id='ellipsis' />
                     <div className='absolute left-[0.5rem]'>
@@ -35,7 +34,17 @@ const Navigation = () => {
                         <span>/</span>
                     </div>
                 </div>
-                <div className='flex items-center justify-center w-3/12'>
+                {/* Menu */}
+                <div className='flex items-center justify-center w-3/12 hidden xl:menu'>
+                    <ul className='flex flex-row items-center justify-center'>
+                        <li className='font-bold text-gray-800'><a className='hover:bg-transparent hover:text-gray-700'>Explore</a></li>
+                        <li className='font-bold text-gray-800'><a className='hover:bg-transparent hover:text-gray-700'>Drops</a></li>
+                        <li className='font-bold text-gray-800'><a className='hover:bg-transparent hover:text-gray-700'>Stats</a></li>
+                        <li className='font-bold text-gray-800'><a className='hover:bg-transparent hover:text-gray-700'>Resources</a></li>
+                    </ul>
+                </div>
+                {/* SVG Icon */}
+                <div className='flex items-center justify-center w-3/12 xl:w-fit'>
                     <div className='px-3 hover:scale-110 hover:cursor-pointer hidden sm:block'>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="black" className="w-8 h-8">
                             <path strokeLinecap='round' strokeLinejoin='round' d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
